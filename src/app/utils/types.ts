@@ -26,4 +26,6 @@ export type ReelOptions = {
     textures: any;
     x: number;
     y: number;
+    stepX: number;
+    stepY: number;
 }

@@ -21,6 +21,6 @@ import { SYMBOLS } from './utils/const';
     textures[symbol] = await Assets.load(`./assets/${symbol}_symbol.png`);
   }
 
-  new SlotMachine(container, textures);
+  new SlotMachine(app, container, textures);
 
 })();

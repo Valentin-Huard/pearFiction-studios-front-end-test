@@ -1,4 +1,5 @@
 import { Container } from 'pixi.js';
+import type { Application } from 'pixi.js';
 import { getVisibleSymbols } from '../core/reels.ts';
 import { getResult } from '../core/winCalculator.ts';
 import { Button } from './ui/Button.ts';
@@ -18,18 +19,27 @@ export class SlotMachine {
     private readonly button: Button;
     private readonly label: Label;
 
-    constructor(container: Container, textures: Record<string, any>) {
+    constructor(app: Application, container: Container, textures: Record<string, any>) {
 
         this.positions = [0, 0, 0, 0, 0];
 
         this.container = container;
 
+        const margin = 50;
+        const symbolSize = 150;
+        const symbolStep = 160;
+        const reelWidth = (COLS - 1) * symbolStep + symbolSize;
+        const reelStartX = (app.screen.width - reelWidth) / 2;
+        const reelStartY = margin;
+
         this.reel = new Reel(COLS, ROWS, {
             textures: textures,
-            width: 150,
-            height: 150,
-            x: 160,
-            y: 160,
+            width: symbolSize,
+            height: symbolSize,
+            x: reelStartX,
+            y: reelStartY,
+            stepX: symbolStep,
+            stepY: symbolStep,
         });
         
         for (const col of this.reel.grid) {
@@ -44,8 +54,8 @@ export class SlotMachine {
             width: 150,
             height: 150,
             fontSize: 28,
-            x: 600,
-            y: 600,
+            x: app.screen.width - 200,
+            y: app.screen.height - 200,
             onClick: async () => {
                 this.spin();
             }
@@ -60,8 +70,8 @@ export class SlotMachine {
                 fontSize: 20,
                 fontFamily: 'Arial',
             },
-            x: 500, 
-            y: 600
+            x: app.screen.width / 2,
+            y: app.screen.height * 3 / 4
         });
 
         this.container.addChild(this.label.elem);

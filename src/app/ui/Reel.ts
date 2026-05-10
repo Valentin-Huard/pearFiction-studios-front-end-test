@@ -17,8 +17,8 @@ export class Reel {
         
         symbol.width = option.width;
         symbol.height = option.height;
-        symbol.x = option.x * c;
-        symbol.y = option.y * r;
+        symbol.x = option.x + option.stepX * c;
+        symbol.y = option.y + option.stepY * r;
 
         this.grid[c][r] = symbol;
       }
