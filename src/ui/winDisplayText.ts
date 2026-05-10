@@ -1,6 +1,10 @@
 import type { Win } from "../utils/types";
 
-
+/**
+ * Generates a display string summarizing the total wins and details of each winning payline
+ * @param wins An array of Win objects representing the winning paylines and their payouts
+ * @returns A string summarizing the total wins and details of each winning payline
+ */
 export function winDisplayText(wins: Win[]): string {
     let total = 0;
     let lines = wins.map((win) => {

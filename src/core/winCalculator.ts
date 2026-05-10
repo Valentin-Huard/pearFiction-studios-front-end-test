@@ -1,6 +1,11 @@
 import { PAYLINES, PAYTABLE } from "../utils/const";
 import type { Win, Symbol } from "../utils/types";
 
+/**
+ * Calculates the winning paylines and their corresponding payouts based on the current grid of symbols
+ * @param grid A 2D array of symbols representing the current state of the slot machine reels
+ * @returns An array of Win objects representing the winning paylines and their payouts
+ */
 export function getResult(grid: Symbol[][]) {
     const wins: Win[] = [];
     // Use the Battleship game method

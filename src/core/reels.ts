@@ -1,6 +1,11 @@
 import type { Symbol } from "../utils/types";
 import { REELSET } from "../utils/const";
 
+/**
+ * Computes the visible symbols on the slot machine reels based on their current positions
+ * @param positions An array of numbers representing the current positions of each reel
+ * @returns A 2D array of symbols representing the visible symbols on the reels
+ */
 export function getVisibleSymbols(positions: number[]): Symbol[][] {
     const maxLine = 5;
     const maxColumn = 5;

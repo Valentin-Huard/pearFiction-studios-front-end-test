@@ -1,8 +1,9 @@
 import type { Coord, Symbol } from "./types";
 
+// This file defines constant values of the game
+
 export const SYMBOLS: Symbol[] = ['hv1', 'hv2', 'hv3', 'hv4', 'lv1', 'lv2', 'lv3', 'lv4'];
 
-//5,14,9,9,16
 export const REELSET: Symbol[][] = [
   ['hv2', 'lv3', 'lv3', 'hv1', 'hv1', 'lv1', 'hv1', 'hv4', 'lv1', 'hv3', 'hv2', 'hv3', 'lv4', 'hv4', 'lv1', 'hv2', 'lv4', 'lv1', 'lv3', 'hv2'],
   ['hv1', 'lv2', 'lv3', 'lv2', 'hv1', 'lv1', 'lv4', 'lv1', 'lv1', 'hv4', 'lv3', 'hv2', 'lv1', 'lv3', 'hv1', 'lv1', 'lv2', 'lv4', 'lv3', 'lv2'],
