@@ -1,6 +1,10 @@
 import { Text } from 'pixi.js';
 import type { TextOptions } from '../utils/types';
 
+/**
+ * A wrapper around PIXI.Text to display centered text on the screen
+ * Call `update()` to change the text content
+ */
 export class Label {
     readonly elem: Text;  
 

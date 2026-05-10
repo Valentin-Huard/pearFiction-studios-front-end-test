@@ -10,7 +10,11 @@ import { winDisplayText } from '../ui/winDisplayText.ts';
 
 const COLS = 5;
 const ROWS = 3;
-
+/**
+ * Manages the main game screen, including the reels, spin button, and win display label
+ * The `spin()` method randomizes the reel positions and updates the display accordingly
+ * The `updateSymbols()` method refreshes the reel textures and win label based on the current positions
+ */
 export class SlotMachine {
 
     private positions: number[];

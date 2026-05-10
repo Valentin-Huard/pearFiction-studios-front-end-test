@@ -1,3 +1,5 @@
+// This file defines TypeScript types for the options objects used to create UI components
+
 export type ButtonOptions = {
     text: string;
     width: number;

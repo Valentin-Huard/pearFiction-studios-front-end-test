@@ -1,7 +1,10 @@
 import { Sprite } from "pixi.js";
 import type { ButtonOptions } from "../utils/types";
 
-
+/**
+ * A wrapper around PIXI.Sprite to display a clickable button on the screen
+ * The `onClick` callback is triggered when the button is clicked
+ */
 export class Button {
     readonly elem: Sprite;
 

@@ -2,6 +2,10 @@ import { Sprite } from 'pixi.js';
 import type { Symbol } from '../../utils/types.ts';
 import type { ReelOptions } from '../utils/types.ts';
 
+/**
+ * Manages the grid of symbols displayed on the slot machine
+ * The `update()` method updates the textures of the symbols based on the provided grid
+ */
 export class Reel {
   readonly grid: Sprite[][];
   readonly textures: Record<string, any>;
