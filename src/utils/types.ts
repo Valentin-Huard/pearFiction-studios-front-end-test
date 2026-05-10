@@ -4,7 +4,7 @@ export type Win = {
   paylineId: number;
   symbol: Symbol;
   count: number;
-  payout?: number;
+  payout: number;
 };
 
 export type Coord = [number, number];

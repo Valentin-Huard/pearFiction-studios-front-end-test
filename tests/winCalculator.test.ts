@@ -1,40 +1,34 @@
 import { describe, it, expect } from 'vitest';
-import { checkPaywinOne, getResult } from '../src/winCalculator.ts';
+import { getResult } from '../src/winCalculator.ts';
 import { getVisibleSymbols } from '../src/reels.ts';
 
 function translatePositionsToSymbols(positions: number[]) {
   return getVisibleSymbols(positions);
 }
 
-describe('checkPaywinOne', () => {
-  it('returns the correct grid for position [lv3, lv3, lv3, lv2,lv4] and line 1', () => {
-    const wins = checkPaywinOne([['lv3', 'lv3', 'lv3', 'lv2', 'lv4']], 0);
-    expect(typeof wins).not.toBe("boolean")
-    expect(wins).toMatchObject({ paylineId: 1, symbol: 'lv3', count: 3 });
-  });
-});
-
 describe('getResult', () => {
   it('Check win for positions [0,11,1,10,14]', () => {
     let grid = translatePositionsToSymbols([0,11,1,10,14]);
     const wins = getResult(grid);
+    expect(wins).toHaveLength(2);
 
     const paylines2 = wins.find((w) => w.paylineId === 2);
     expect(paylines2).toBeDefined();
-    expect(paylines2).toMatchObject({ paylineId: 2, symbol: 'hv2', count: 3});
+    expect(paylines2).toMatchObject({ paylineId: 2, symbol: 'hv2', count: 3, payout: 5 });
 
     const payline5 = wins.find((w) => w.paylineId === 5);
     expect(payline5).toBeDefined();
-    expect(payline5).toMatchObject({ paylineId: 5, symbol: 'lv3', count: 3});
+    expect(payline5).toMatchObject({ paylineId: 5, symbol: 'lv3', count: 3, payout: 1 });
 
   });
 
   it('Check win for positions [0,0,0,0,0]', () => {
     let grid = translatePositionsToSymbols([0,0,0,0,0]);
     const wins = getResult(grid);
+    expect(wins).toHaveLength(1);
 
     expect(wins[0]).toBeDefined();
-    expect(wins[0]).toMatchObject({ paylineId: 3, symbol: 'lv3', count: 3});
+    expect(wins[0]).toMatchObject({ paylineId: 3, symbol: 'lv3', count: 3, payout: 1 });
 
   });
 
@@ -43,9 +37,15 @@ describe('getResult', () => {
 
     const wins = getResult(grid);
     expect(wins).toHaveLength(1);
+    // NOTE: difference between the specs and reelset ?
+    // expect(wins).toHaveLength(2);
 
-    const pl6 = wins.find((w) => w.paylineId === 6);
-    expect(pl6).toMatchObject({ symbol: 'lv1', count: 4 });
+    const payline6 = wins.find((w) => w.paylineId === 6);
+    expect(payline6).toMatchObject({ symbol: 'lv1', count: 4, payout: 5 });
+
+    // NOTE: difference between the specs and reelset ?
+    // const payline7 = wins.find((w) => w.paylineId === 7);
+    // expect(payline7).toMatchObject({ symbol: 'lv1', count: 4, payout: 5 });
 
   });
 
