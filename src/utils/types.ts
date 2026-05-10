@@ -6,3 +6,6 @@ export type Win = {
   count: number;
   payout?: number;
 };
+
+export type Coord = [number, number];
+
