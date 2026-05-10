@@ -18,6 +18,7 @@ const ROWS = 3;
 export class SlotMachine {
 
     private positions: number[];
+    private readonly app: Application;
     private readonly container: Container;
     private readonly reel: Reel;
     private readonly button: Button;
@@ -25,27 +26,17 @@ export class SlotMachine {
 
     constructor(app: Application, container: Container, textures: Record<string, any>) {
 
+        this.app = app;
         this.positions = [0, 0, 0, 0, 0];
-
         this.container = container;
 
-        const margin = 50;
-        const symbolSize = 150;
-        const symbolStep = 160;
-        const reelWidth = (COLS - 1) * symbolStep + symbolSize;
-        const reelStartX = (app.screen.width - reelWidth) / 2;
-        const reelStartY = margin;
-
         this.reel = new Reel(COLS, ROWS, {
-            textures: textures,
-            width: symbolSize,
-            height: symbolSize,
-            x: reelStartX,
-            y: reelStartY,
-            stepX: symbolStep,
-            stepY: symbolStep,
+            textures,
+            width: 0, height: 0,
+            x: 0, y: 0,
+            stepX: 0, stepY: 0,
         });
-        
+
         for (const col of this.reel.grid) {
             for (const symbol of col) {
                 this.container.addChild(symbol);
@@ -53,34 +44,64 @@ export class SlotMachine {
         }
 
         this.button = new Button({
-            text: "Spin",
             texture: textures.spinButton,
             width: 150,
             height: 150,
-            fontSize: 28,
-            x: app.screen.width - 200,
-            y: app.screen.height - 200,
-            onClick: async () => {
-                this.spin();
-            }
+            x: 0, y: 0,
+            onClick: async () => { this.spin(); }
         });
-
         this.container.addChild(this.button.elem);
 
         this.label = new Label({
             text: 'Total wins: 0',
-            style: {
-                fill: '#ffffff',
-                fontSize: 20,
-                fontFamily: 'Arial',
-            },
-            x: app.screen.width / 2,
-            y: app.screen.height * 3 / 4
+            style: { fill: '#ffffff', fontSize: 28, fontFamily: 'Arial' },
+            x: 0, y: 0,
         });
-
         this.container.addChild(this.label.elem);
 
+        this.layout();
+        app.renderer.on('resize', () => this.layout());
         this.updateSymbols();
+    }
+
+    /**
+     * Calculates the layout of the reels, button, and label based on the current screen size and resizes them
+     */
+    private layout(): void {
+        const screenWidth = this.app.screen.width;
+        const screenHeight = this.app.screen.height;
+        const margin = 50;
+        const buttonSize = 150;
+
+        const reelZoneH = screenHeight * 2 / 3;
+        const uiZoneY = screenHeight * 2 / 3;
+
+        const availW = screenWidth - 2 * margin;
+        const availH = reelZoneH - 2 * margin;
+
+        const symbolSize = Math.floor(Math.min(availW / COLS, availH / ROWS));
+        const gap = Math.max(5, Math.floor(symbolSize * 0.05));
+        const stepX = symbolSize + gap;
+        const stepY = symbolSize + gap;
+
+        const reelWidth = (COLS - 1) * stepX + symbolSize;
+        const reelHeight = (ROWS - 1) * stepY + symbolSize;
+        const reelStartX = (screenWidth - reelWidth) / 2;
+        const reelStartY = margin + (reelZoneH - 2 * margin - reelHeight) / 2;
+
+        this.reel.resize(reelStartX, reelStartY, symbolSize, stepX, stepY);
+
+        this.button.elem.width = buttonSize;
+        this.button.elem.height = buttonSize;
+
+        const labelY = uiZoneY + margin;
+        const labelCenterY = labelY + 14;
+
+        this.label.elem.x = reelStartX;
+        this.label.elem.y = labelY;
+
+        this.button.elem.x = reelStartX + reelWidth - buttonSize;
+        this.button.elem.y = labelCenterY - buttonSize / 2;
     }
 
     private spin(){

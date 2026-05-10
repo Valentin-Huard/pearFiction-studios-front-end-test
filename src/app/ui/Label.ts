@@ -15,7 +15,7 @@ export class Label {
             fontFamily: options.style?.fontFamily ?? 'Arial',
         }});
 
-        this.elem.anchor.set(0.5, 0);
+        this.elem.anchor.set(0, 0);
         this.elem.x = options.x ?? 0;
         this.elem.y = options.y ?? 0;
 

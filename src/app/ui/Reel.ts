@@ -37,4 +37,16 @@ export class Reel {
       }
     }
   }
+
+  resize(x: number, y: number, symbolSize: number, stepX: number, stepY: number): void {
+    for (let c = 0; c < this.grid.length; c++) {
+      for (let r = 0; r < this.grid[c].length; r++) {
+        const symbol = this.grid[c][r];
+        symbol.width = symbolSize;
+        symbol.height = symbolSize;
+        symbol.x = x + stepX * c;
+        symbol.y = y + stepY * r;
+      }
+    }
+  }
 }
