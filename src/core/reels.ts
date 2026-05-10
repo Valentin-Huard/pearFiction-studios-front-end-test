@@ -1,5 +1,5 @@
-import type { Symbol } from "./utils/types";
-import { REELSET } from "./utils/const";
+import type { Symbol } from "../utils/types";
+import { REELSET } from "../utils/const";
 
 export function getVisibleSymbols(positions: number[]): Symbol[][] {
     const maxLine = 5;

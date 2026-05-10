@@ -1,4 +1,4 @@
-import type { Win } from "./utils/types";
+import type { Win } from "../utils/types";
 
 
 export function winDisplayText(wins: Win[]): string {

@@ -1,5 +1,5 @@
-import { PAYLINES, PAYTABLE } from "./utils/const";
-import type { Win, Symbol } from "./utils/types";
+import { PAYLINES, PAYTABLE } from "../utils/const";
+import type { Win, Symbol } from "../utils/types";
 
 export function getResult(grid: Symbol[][]) {
     const wins: Win[] = [];

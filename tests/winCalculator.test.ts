@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { getResult } from '../src/winCalculator.ts';
-import { getVisibleSymbols } from '../src/reels.ts';
+import { getResult } from '../src/core/winCalculator.ts';
+import { getVisibleSymbols } from '../src/core/reels.ts';
 
 function translatePositionsToSymbols(positions: number[]) {
   return getVisibleSymbols(positions);

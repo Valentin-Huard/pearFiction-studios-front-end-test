@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { winDisplayText } from '../src/winDisplayText.ts';
+import { winDisplayText } from '../src/ui/winDisplayText.ts';
 
 describe('winDisplayText', () => {
   it('No wins', () => {
