@@ -54,7 +54,7 @@ export class SlotMachine {
 
         this.label = new Label({
             text: 'Total wins: 0',
-            style: { fill: '#ffffff', fontSize: 28, fontFamily: 'Arial' },
+            style: { fill: '#000000', fontSize: 28, fontFamily: 'Arial' },
             x: 0, y: 0,
         });
         this.container.addChild(this.label.elem);
@@ -65,16 +65,17 @@ export class SlotMachine {
     }
 
     /**
-     * Calculates the layout of the reels, button, and label based on the current screen size and resizes them
+     * Calculates the layout of the reels, button, and label based on the current screen size and resizes them.
      */
     private layout(): void {
         const screenWidth = this.app.screen.width;
         const screenHeight = this.app.screen.height;
         const margin = 50;
-        const buttonSize = 150;
+        const isMobile = screenWidth <= 600;
 
-        const reelZoneH = screenHeight * 2 / 3;
-        const uiZoneY = screenHeight * 2 / 3;
+        const reelZoneH = isMobile ? screenHeight / 2 : screenHeight * 2 / 3;
+        const uiZoneY = reelZoneH;
+        const uiZoneH = screenHeight - reelZoneH;
 
         const availW = screenWidth - 2 * margin;
         const availH = reelZoneH - 2 * margin;
@@ -91,17 +92,29 @@ export class SlotMachine {
 
         this.reel.resize(reelStartX, reelStartY, symbolSize, stepX, stepY);
 
+        const buttonSize = isMobile ? Math.min(120, screenWidth * 0.25) : 150;
         this.button.elem.width = buttonSize;
         this.button.elem.height = buttonSize;
 
-        const labelY = uiZoneY + margin;
-        const labelCenterY = labelY + 14;
+        if (isMobile) {
+            const halfUI = uiZoneH / 2;
 
-        this.label.elem.x = reelStartX;
-        this.label.elem.y = labelY;
+            this.label.elem.anchor.set(0.5, 0);
+            this.label.elem.x = screenWidth / 2;
+            this.label.elem.y = uiZoneY;
 
-        this.button.elem.x = reelStartX + reelWidth - buttonSize;
-        this.button.elem.y = labelCenterY - buttonSize / 2;
+            this.button.elem.x = screenWidth / 2 - buttonSize / 2;
+            this.button.elem.y = uiZoneY + halfUI;
+        } else {
+            const labelY = uiZoneY + margin;
+
+            this.label.elem.anchor.set(0, 0);
+            this.label.elem.x = reelStartX;
+            this.label.elem.y = labelY;
+
+            this.button.elem.x = reelStartX + reelWidth - buttonSize;
+            this.button.elem.y = labelY + 14 - buttonSize / 2;
+        }
     }
 
     private spin(){

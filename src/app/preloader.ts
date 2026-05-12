@@ -16,7 +16,7 @@ export class PreloaderScreen {
     this.label = new Text({
       text: '0%',
       style: {
-        fill: '#ffffff',
+        fill: '#000000',
         fontSize: 30,
         fontFamily: 'Arial',
         fontWeight: 'bold',

@@ -4,7 +4,7 @@ import { PreloaderScreen } from './app/preloader';
 
 (async () => {
   const app = new Application();
-  await app.init({ background: '#1a1a2e', resizeTo: window });
+  await app.init({ background: '#6a6a6a', resizeTo: window });
   document.body.appendChild(app.canvas);
 
   const preloader = new PreloaderScreen(app);

@@ -94,18 +94,16 @@ Unit tests for the slot math and win calculation logic can be run with:
 ---
 
 ## Scope Decisions
-Spin animations and additional visual effects were intentionally omitted.
-The assignment explicitly states that animations are not required, and priority
-was given to correctness, clarity, and robustness of the slot math and overall
-architecture.
+Spin animations and additional visual effects were intentionally omitted.  
+The assignment explicitly states that animations are not required, and priority was given to correctness, clarity, and robustness of the slot math and overall architecture.
 
 ---
 
 ## Possible Improvements
-With more time, the following features could be added:
+With more time and if needed, the following features could be added:
 
-reel spin and stop animations
-symbol anticipation effects
-payline visual highlights
-configuration-driven reelsets and paytables
-additional automated test cases
+- reel spin and stop animations  
+- symbol anticipation effects  
+- payline visual highlights   
+- configuration-driven reelsets and paytables  
+- additional automated test cases  
