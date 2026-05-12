@@ -1,6 +1,6 @@
 import { Sprite } from 'pixi.js';
 import type { Symbol } from '../../utils/types.ts';
-import type { ReelOptions } from '../utils/types.ts';
+import type { ReelOptions, TextureRecord } from '../utils/types.ts';
 
 /**
  * Manages the grid of symbols displayed on the slot machine
@@ -8,7 +8,7 @@ import type { ReelOptions } from '../utils/types.ts';
  */
 export class Reel {
   readonly grid: Sprite[][];
-  readonly textures: Record<string, any>;
+  readonly textures: TextureRecord;
 
   constructor(col: number, row: number, option : ReelOptions) {
     this.textures = option.textures;

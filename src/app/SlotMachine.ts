@@ -7,6 +7,7 @@ import { Reel } from './ui/Reel.ts';
 import { Label } from './ui/Label.ts';
 import { REELSET } from '../utils/const.ts';
 import { winDisplayText } from '../ui/winDisplayText.ts';
+import type { TextureRecord } from './utils/types.ts';
 
 const COLS = 5;
 const ROWS = 3;
@@ -24,11 +25,12 @@ export class SlotMachine {
     private readonly button: Button;
     private readonly label: Label;
 
-    constructor(app: Application, container: Container, textures: Record<string, any>) {
+    constructor(app: Application, textures: TextureRecord) {
 
         this.app = app;
         this.positions = [0, 0, 0, 0, 0];
-        this.container = container;
+        this.container = new Container();
+        this.app.stage.addChild(this.container);
 
         this.reel = new Reel(COLS, ROWS, {
             textures,
