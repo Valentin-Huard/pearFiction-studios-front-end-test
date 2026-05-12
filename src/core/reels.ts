@@ -1,5 +1,5 @@
 import type { Symbol } from "../utils/types";
-import { REELSET } from "../utils/const";
+import { COLS, REELSET, ROWS } from "../utils/const";
 
 /**
  * Computes the visible symbols on the slot machine reels based on their current positions
@@ -7,13 +7,11 @@ import { REELSET } from "../utils/const";
  * @returns A 2D array of symbols representing the visible symbols on the reels
  */
 export function getVisibleSymbols(positions: number[]): Symbol[][] {
-    const maxLine = 5;
-    const maxColumn = 5;
     const grid: Symbol[][] = [];
 
-    for (let row = 0; row < maxLine; row++) {
+    for (let row = 0; row < ROWS; row++) {
         let rowSymbols: Symbol[] = [];
-        for (let col = 0; col < maxColumn; col++) {
+        for (let col = 0; col < COLS; col++) {
             let band = REELSET[col];
             // Push the symbol for the current position and add row index to get the next symbol in the band
             // Use modulo to wrap around the band if the value exceeds the length (0-19)

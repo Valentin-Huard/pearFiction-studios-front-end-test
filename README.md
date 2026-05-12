@@ -22,7 +22,6 @@ The project is organized in two part : math logic and application rendering:
 
 This layer is completely independent from Pixi.js and rendering concerns
 
-
 ### Application Rendering
 
 - `src/app/`  
@@ -53,16 +52,20 @@ Unit tests are located in the `tests/` directory and cover:
 
 All position examples provided in the `programming exercise.md` file were used to manually validate the results of the win calculations.
 
-Except for positions [5,14,9,9,16]. It is stated that these positions should trigger paylines 6 and 7. However, payline 7 cannot be verified.
-The expected screen is:
-  lv1 hv1 lv1 hv1 hv1
-  hv1 lv1 hv3 lv1 lv2
-  lv1 lv2 lv1 hv1 hv4
+Except for positions [5,14,9,9,16]. It is stated that these positions should trigger paylines 6 and 7.  
+However, payline 7 cannot be verified.
 
-Actual screen
- lv1 hv1 lv1 hv1 hv1
- hv1 lv3 hv2 lv4 lv2
- hv1 lv1 hv2 lv2 hv1
+    The expected screen is:
+      lv1 hv1 lv1 hv1 hv1
+      hv1 lv1 hv3 lv1 lv2
+      lv1 lv2 lv1 hv1 hv4
+
+    Actual screen:
+      lv1 hv1 lv1 hv1 hv1
+      hv1 lv1 hv3 lv1 lv2
+      hv4 lv2 lv1 hv1 hv4
+      
+The first character in the last line does not match
 
 ---
 
@@ -71,10 +74,10 @@ Actual screen
 Ce projet utilise pnpm comme gestionnaire de paquets.
 
 Installer les dépendances :
-pnpm install
+`pnpm install`
 
 Start the development server :
-pnpm run dev
+`pnpm run dev`
 
 Then open the browser at:
 http://localhost:5173
@@ -83,9 +86,10 @@ The project runs entirely in the browser and does not require any backend.
 
 ---
 
-## Running the project
+## Running tests
+
 Unit tests for the slot math and win calculation logic can be run with:
-pnpm run test
+`pnpm run test`
 
 ---
 

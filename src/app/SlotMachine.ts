@@ -5,12 +5,10 @@ import { getResult } from '../core/winCalculator.ts';
 import { Button } from './ui/Button.ts';
 import { Reel } from './ui/Reel.ts';
 import { Label } from './ui/Label.ts';
-import { REELSET } from '../utils/const.ts';
+import { COLS, REELSET, ROWS } from '../utils/const.ts';
 import { winDisplayText } from '../ui/winDisplayText.ts';
 import type { TextureRecord } from './utils/types.ts';
 
-const COLS = 5;
-const ROWS = 3;
 /**
  * Manages the main game screen, including the reels, spin button, and win display label
  * The `spin()` method randomizes the reel positions and updates the display accordingly

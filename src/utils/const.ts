@@ -2,6 +2,9 @@ import type { Coord, Symbol } from "./types";
 
 // This file defines constant values of the game
 
+export const COLS = 5;
+export const ROWS = 3;
+
 export const SYMBOLS: Symbol[] = ['hv1', 'hv2', 'hv3', 'hv4', 'lv1', 'lv2', 'lv3', 'lv4'];
 
 export const REELSET: Symbol[][] = [

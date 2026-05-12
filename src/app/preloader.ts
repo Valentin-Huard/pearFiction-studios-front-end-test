@@ -35,7 +35,7 @@ export class PreloaderScreen {
     const textures: TextureRecord = {};
 
     try {
-      textures['spinButton'] = await Assets.load(`./assets/spin_buttn.png`);
+      textures['spinButton'] = await Assets.load(`./assets/spin_button.png`);
     } catch {
       this.label.text = 'Loading failed. Please refresh. If the problem persists, contact support.';
       throw new Error(`Failed to load: spinButton`);
