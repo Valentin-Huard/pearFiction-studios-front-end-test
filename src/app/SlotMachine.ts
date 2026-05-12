@@ -13,6 +13,7 @@ import type { TextureRecord } from './utils/types.ts';
  * Manages the main game screen, including the reels, spin button, and win display label
  * The `spin()` method randomizes the reel positions and updates the display accordingly
  * The `updateSymbols()` method refreshes the reel textures and win label based on the current positions
+ * The `layout()` method calculates the layout of the reels, button, and label based on the current screen size and resizes them.
  */
 export class SlotMachine {
 
@@ -64,9 +65,6 @@ export class SlotMachine {
         this.updateSymbols();
     }
 
-    /**
-     * Calculates the layout of the reels, button, and label based on the current screen size and resizes them.
-     */
     private layout(): void {
         const screenWidth = this.app.screen.width;
         const screenHeight = this.app.screen.height;

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { getVisibleSymbols } from '../src/reels';
+import { getVisibleSymbols } from '../src/core/reels.ts';
 
 describe('getVisibleSymbols', () => {
   it('returns the correct grid for position [0,0,0,0,0]', () => {

@@ -5,6 +5,7 @@ import type { ReelOptions, TextureRecord } from '../utils/types.ts';
 /**
  * Manages the grid of symbols displayed on the slot machine
  * The `update()` method updates the textures of the symbols based on the provided grid
+ * The `resize()` method recalculates the positions and sizes of the symbols
  */
 export class Reel {
   readonly grid: Sprite[][];

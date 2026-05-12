@@ -3,6 +3,11 @@ import type { Application } from 'pixi.js';
 import type { TextureRecord } from './utils/types';
 import { SYMBOLS } from '../utils/const';
 
+/**
+ * PreloaderScreen displays a loading screen while the game assets are being loaded.
+ * The `load()` method loads all necessary textures and updates the progress label accordingly.
+ * The `destroy()` method cleans up the preloader screen once loading is complete.
+ */
 export class PreloaderScreen {
   private readonly app: Application;
   private readonly container: Container;
